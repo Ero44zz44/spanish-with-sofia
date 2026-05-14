@@ -53,6 +53,7 @@ export default function BookingWidget() {
   const [loadingSlots, setLoadingSlots] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [apiError, setApiError] = useState<string>("");
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -88,6 +89,7 @@ export default function BookingWidget() {
   async function handleConfirm() {
     if (!state.service || !state.date || !state.time || !state.name || !state.email || !state.phone) return;
     setSubmitting(true);
+    setApiError("");
     try {
       const res = await fetch("/api/bookings", {
         method: "POST",
@@ -105,9 +107,23 @@ export default function BookingWidget() {
           duration: state.service.duration_minutes,
         }),
       });
-      if (!res.ok) throw new Error();
+      if (res.status === 409) {
+        setState({ ...state, time: "" });
+        setStep("time");
+        setApiError(lang === "es"
+          ? "Ese horario acaba de ser reservado. Por favor elige otro."
+          : "That slot was just taken by someone else. Please pick a different time.");
+        return;
+      }
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setApiError(data.error || (lang === "es" ? "Algo salió mal. Inténtalo de nuevo." : "Something went wrong. Please try again."));
+        setStatus("error");
+        return;
+      }
       setStatus("success");
     } catch {
+      setApiError(lang === "es" ? "Algo salió mal. Inténtalo de nuevo." : "Something went wrong. Please try again.");
       setStatus("error");
     } finally {
       setSubmitting(false);
@@ -274,6 +290,11 @@ export default function BookingWidget() {
       {/* Step: Time */}
       {step === "time" && (
         <div>
+          {apiError && (
+            <div style={{ background: "#fff1f0", border: "1px solid #ffccc7", borderRadius: "var(--radius)", padding: "0.75rem 1rem", marginBottom: "1.25rem", color: "#c0392b", fontSize: "0.9rem", textAlign: "center" }}>
+              ⚠️ {apiError}
+            </div>
+          )}
           <p style={{ color: "var(--color-muted)", marginBottom: "1.5rem", textAlign: "center" }}>
             {state.date ? format(parseISO(state.date), "EEEE, MMMM d") : ""} — {serviceName}
           </p>
@@ -295,7 +316,7 @@ export default function BookingWidget() {
                 return (
                   <button
                     key={slot}
-                    onClick={() => { setState({ ...state, time: slot }); setStep("details"); }}
+                    onClick={() => { setState({ ...state, time: slot }); setApiError(""); setStep("details"); }}
                     style={{
                       padding: "0.75rem",
                       borderRadius: "var(--radius)",
@@ -440,9 +461,9 @@ export default function BookingWidget() {
           </div>
 
           {status === "error" && (
-            <p style={{ color: "#e53e3e", marginBottom: "1rem", textAlign: "center", fontSize: "0.9rem" }}>
-              {tb.errorMsg}
-            </p>
+            <div style={{ background: "#fff1f0", border: "1px solid #ffccc7", borderRadius: "var(--radius)", padding: "0.75rem 1rem", marginBottom: "1rem", color: "#c0392b", fontSize: "0.9rem", textAlign: "center" }}>
+              ⚠️ {apiError || tb.errorMsg}
+            </div>
           )}
 
           <button
