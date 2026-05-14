@@ -26,7 +26,7 @@ export default function BookPage() {
               marginBottom: "0.75rem",
             }}
           >
-            Book a Lesson with Sofía 🇲🇽
+            Book a Lesson with Sofía
           </h1>
           <p style={{ fontSize: "1.05rem", color: "var(--color-muted)", maxWidth: "520px", margin: "0 auto", lineHeight: 1.7 }}>
             Choose your lesson type and pick a time that works for you. All times shown in Los Angeles time (GMT-8).
@@ -57,13 +57,22 @@ export default function BookPage() {
           id="reassurance-grid"
         >
           {[
-            { icon: "🔒", text: "No payment required to book" },
-            { icon: "🔄", text: "Free cancellation 24h before" },
-            { icon: "✉️", text: "Confirmation sent to your email" },
-          ].map((item) => (
-            <div key={item.icon} className="reassurance-card">
-              <div style={{ fontSize: "1.25rem", marginBottom: "0.35rem" }}>{item.icon}</div>
-              {item.text}
+            {
+              icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>,
+              label: "No payment required to book",
+            },
+            {
+              icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>,
+              label: "Free cancellation 24h before",
+            },
+            {
+              icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>,
+              label: "Confirmation sent to your email",
+            },
+          ].map((item, i) => (
+            <div key={i} className="reassurance-card">
+              <div style={{ marginBottom: "0.5rem" }}>{item.icon}</div>
+              {item.label}
             </div>
           ))}
         </div>

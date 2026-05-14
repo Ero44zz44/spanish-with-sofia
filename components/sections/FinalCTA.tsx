@@ -147,7 +147,10 @@ export default function FinalCTA() {
               el.style.color = "rgba(255,255,255,0.8)";
             }}
           >
-            ✉ Send a Message
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            Send a Message
           </a>
         </div>
 
@@ -159,7 +162,10 @@ export default function FinalCTA() {
             color: "rgba(255,255,255,0.45)",
           }}
         >
-          ⭐ {TUTOR.reviewScore}/5 from {TUTOR.reviewCount} reviews · No credit card needed · Cancel anytime
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="rgba(255,255,255,0.45)" stroke="rgba(255,255,255,0.45)" strokeWidth="1" style={{ display: "inline", verticalAlign: "middle", marginRight: "0.25rem" }}>
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            {TUTOR.reviewScore}/5 from {TUTOR.reviewCount} reviews · No credit card needed · Cancel anytime
         </p>
       </div>
     </section>

@@ -31,7 +31,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1rem" }}>
-              <span style={{ fontSize: "1.2rem" }}>🇲🇽</span>
+              <span style={{ width: "0.4rem", height: "0.4rem", borderRadius: "50%", background: "var(--color-primary)", flexShrink: 0, display: "inline-block" }} />
               <span style={{ fontFamily: "var(--font-fraunces, var(--font-serif))", fontWeight: 700, fontSize: "1.1rem", color: "var(--color-white)" }}>
                 Sofía Martínez
               </span>
@@ -86,7 +86,7 @@ export default function Footer() {
               <a href={TUTOR.whatsapp} target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none" }}>
                 {TUTOR.phone}
               </a>
-              <span style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem" }}>🕐 {TUTOR.tzLabel}</span>
+              <span style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem" }}>{TUTOR.tzLabel}</span>
             </div>
           </div>
         </div>

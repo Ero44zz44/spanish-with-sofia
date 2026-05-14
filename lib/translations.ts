@@ -10,19 +10,19 @@ export const translations = {
       bookTrial: "Book Free Trial",
     },
     hero: {
-      label: "🇲🇽 Native Spanish Tutor from Mexico City",
+      label: "Native Spanish Tutor from Mexico City",
       headline: "Speak Spanish with Confidence in 90 Days",
       subheadline:
         "Personalized 1-on-1 Spanish lessons with a native Mexican teacher. Build real conversational fluency, master grammar naturally, and explore Latin American culture from day one.",
       ctaPrimary: "Book Your Free 30-Min Trial",
       ctaSecondary: "Watch Intro Video",
-      trust1: "⭐ 4.9/5 (127 reviews)",
-      trust2: "🎓 500+ students taught",
-      trust3: "🌎 Students in 18 countries",
+      trust1: "4.9/5 (127 reviews)",
+      trust2: "500+ students taught",
+      trust3: "Students in 18 countries",
     },
     about: {
       label: "About Me",
-      heading: "Hola, I'm Sofía 👋",
+      heading: "Hola, I'm Sofía",
       story: [
         "Born and raised in Mexico City, I've been helping English-speaking adults fall in love with Spanish for the past 8 years.",
         "I started teaching after working as a translator for international companies, where I saw firsthand how language unlocks opportunities — in business, in travel, in relationships.",
@@ -31,10 +31,10 @@ export const translations = {
         "When I'm not teaching, you'll find me cooking my grandmother's mole recipe, hiking the volcanoes around Mexico City, or planning my next trip to Oaxaca.",
       ],
       credentials: [
-        "🎓 Master's in Applied Linguistics, UNAM",
-        "📜 DELE & CEDEEM certified Spanish teacher",
-        "🌎 8 years teaching adults from 30+ countries",
-        "💬 Native speaker of Mexican Spanish (also fluent in English)",
+        "Master's in Applied Linguistics, UNAM",
+        "DELE & CEDEEM certified Spanish teacher",
+        "8 years teaching adults from 30+ countries",
+        "Native speaker of Mexican Spanish (also fluent in English)",
       ],
       cta: "Read My Full Story",
     },
@@ -46,7 +46,6 @@ export const translations = {
       perHour: "/hour",
       services: [
         {
-          icon: "💬",
           name: "Conversational Spanish",
           description:
             "Speak from day one. Build real fluency through structured conversations on topics that matter to you. Perfect for travel, daily life, and connecting with Spanish speakers.",
@@ -54,7 +53,6 @@ export const translations = {
           price: "$35",
         },
         {
-          icon: "💼",
           name: "Business Spanish",
           description:
             "Master professional Spanish for meetings, emails, presentations, and negotiations. Tailored vocabulary for your industry.",
@@ -62,7 +60,6 @@ export const translations = {
           price: "$45",
         },
         {
-          icon: "📚",
           name: "DELE Exam Prep",
           description:
             "Prepare for the official DELE Spanish proficiency exam. Structured curriculum covering all four skills with timed practice tests.",
@@ -70,7 +67,6 @@ export const translations = {
           price: "$40",
         },
         {
-          icon: "✈️",
           name: "Spanish for Travel",
           description:
             "Crash-course Spanish for your upcoming trip. Practical phrases, cultural insights, and survival skills for real-world situations.",
@@ -105,25 +101,25 @@ export const translations = {
     },
     reviews: {
       heading: "What My Students Say",
-      rating: "⭐⭐⭐⭐⭐ 4.9/5 from 127 reviews on iTalki",
+      rating: "4.9/5 from 127 reviews on iTalki",
       items: [
         {
           name: "Sarah",
-          country: "USA 🇺🇸",
+          country: "United States",
           photo: "/reviews/sarah.jpg",
           quote:
             "Sofía completely changed how I approach Spanish. After 6 months, I had a real conversation with my partner's grandmother in Mexico for the first time. Worth every penny.",
         },
         {
           name: "James",
-          country: "UK 🇬🇧",
+          country: "United Kingdom",
           photo: "/reviews/james.jpg",
           quote:
             "I tried Babbel, Duolingo, and 3 other tutors before finding Sofía. She's patient, organized, and makes lessons genuinely fun. Passed my DELE B2 on the first try.",
         },
         {
           name: "Lisa",
-          country: "Canada 🇨🇦",
+          country: "Canada",
           photo: "/reviews/lisa.jpg",
           quote:
             "I needed Business Spanish for my new role. Sofía built a custom curriculum around my industry vocabulary. My team noticed the difference in 2 months.",
@@ -169,7 +165,7 @@ export const translations = {
       heading: "Let's Talk",
       subheading:
         "Have questions? Send me a message and I'll reply within 24 hours.",
-      timezone: "🕐 I'm in Los Angeles (GMT-8)",
+      timezone: "Based in Los Angeles (GMT-8)",
       nameLabel: "Your Name",
       emailLabel: "Email Address",
       countryLabel: "Country",
@@ -196,7 +192,7 @@ export const translations = {
         "Native Mexican Spanish tutor helping English-speaking adults build real fluency online.",
       quickLinks: "Quick Links",
       contactInfo: "Contact",
-      copyright: "© 2026 Spanish with Sofía. Made with ❤️ in Mexico City",
+      copyright: "© 2026 Spanish with Sofía. Made in Mexico City",
     },
     booking: {
       heading: "Book a Lesson",
@@ -222,7 +218,7 @@ export const translations = {
       confirmBtn: "Confirm Booking",
       backBtn: "Back",
       nextBtn: "Next",
-      successHeading: "You're booked! 🎉",
+      successHeading: "You're booked!",
       successMsg:
         "A confirmation email is on its way to you. I'm looking forward to meeting you!",
       errorMsg: "Something went wrong. Please try again.",
@@ -255,19 +251,19 @@ export const translations = {
       bookTrial: "Prueba Gratis",
     },
     hero: {
-      label: "🇲🇽 Profesora nativa de español de Ciudad de México",
+      label: "Profesora nativa de español de Ciudad de México",
       headline: "Habla español con confianza en 90 días",
       subheadline:
         "Clases personalizadas 1-a-1 de español con una profesora nativa mexicana. Desarrolla fluidez conversacional real, aprende gramática de forma natural y explora la cultura latinoamericana desde el primer día.",
       ctaPrimary: "Reserva tu clase de prueba gratis (30 min)",
       ctaSecondary: "Ver video de presentación",
-      trust1: "⭐ 4.9/5 (127 reseñas)",
-      trust2: "🎓 Más de 500 estudiantes",
-      trust3: "🌎 Estudiantes en 18 países",
+      trust1: "4.9/5 (127 reseñas)",
+      trust2: "Más de 500 estudiantes",
+      trust3: "Estudiantes en 18 países",
     },
     about: {
       label: "Sobre mí",
-      heading: "Hola, soy Sofía 👋",
+      heading: "Hola, soy Sofía",
       story: [
         "Nacida y criada en Ciudad de México, llevo 8 años ayudando a adultos angloparlantes a enamorarse del español.",
         "Empecé a enseñar después de trabajar como traductora para empresas internacionales, donde vi de primera mano cómo el idioma abre puertas — en los negocios, los viajes y las relaciones personales.",
@@ -276,10 +272,10 @@ export const translations = {
         "Cuando no estoy enseñando, me encuentras cocinando el mole de mi abuela, escalando los volcanes alrededor de la Ciudad de México o planeando mi próximo viaje a Oaxaca.",
       ],
       credentials: [
-        "🎓 Maestría en Lingüística Aplicada, UNAM",
-        "📜 Profesora certificada DELE y CEDEEM",
-        "🌎 8 años enseñando a adultos de más de 30 países",
-        "💬 Hablante nativa de español mexicano (también habla inglés con fluidez)",
+        "Maestría en Lingüística Aplicada, UNAM",
+        "Profesora certificada DELE y CEDEEM",
+        "8 años enseñando a adultos de más de 30 países",
+        "Hablante nativa de español mexicano (también habla inglés con fluidez)",
       ],
       cta: "Leer mi historia completa",
     },
@@ -291,7 +287,6 @@ export const translations = {
       perHour: "/hora",
       services: [
         {
-          icon: "💬",
           name: "Español Conversacional",
           description:
             "Habla desde el primer día. Desarrolla fluidez real a través de conversaciones estructuradas sobre temas que te importan. Perfecto para viajes, vida cotidiana y conectar con hispanohablantes.",
@@ -299,7 +294,6 @@ export const translations = {
           price: "$35",
         },
         {
-          icon: "💼",
           name: "Español de Negocios",
           description:
             "Domina el español profesional para reuniones, correos, presentaciones y negociaciones. Vocabulario adaptado a tu industria.",
@@ -307,7 +301,6 @@ export const translations = {
           price: "$45",
         },
         {
-          icon: "📚",
           name: "Preparación DELE",
           description:
             "Prepárate para el examen oficial de español DELE. Plan de estudio estructurado que cubre las cuatro habilidades con exámenes prácticos cronometrados.",
@@ -315,7 +308,6 @@ export const translations = {
           price: "$40",
         },
         {
-          icon: "✈️",
           name: "Español para Viajes",
           description:
             "Curso intensivo de español para tu próximo viaje. Frases prácticas, información cultural y habilidades de supervivencia para situaciones reales.",
@@ -350,25 +342,25 @@ export const translations = {
     },
     reviews: {
       heading: "Lo que dicen mis estudiantes",
-      rating: "⭐⭐⭐⭐⭐ 4.9/5 de 127 reseñas en iTalki",
+      rating: "4.9/5 de 127 reseñas en iTalki",
       items: [
         {
           name: "Sarah",
-          country: "EE.UU. 🇺🇸",
+          country: "Estados Unidos",
           photo: "/reviews/sarah.jpg",
           quote:
             "Sofía cambió completamente mi forma de aprender español. Después de 6 meses, tuve una conversación real con la abuela de mi pareja en México por primera vez. Vale cada centavo.",
         },
         {
           name: "James",
-          country: "Reino Unido 🇬🇧",
+          country: "Reino Unido",
           photo: "/reviews/james.jpg",
           quote:
             "Probé Babbel, Duolingo y 3 profesores antes de encontrar a Sofía. Es paciente, organizada y hace las clases genuinamente divertidas. Aprobé el DELE B2 al primer intento.",
         },
         {
           name: "Lisa",
-          country: "Canadá 🇨🇦",
+          country: "Canadá",
           photo: "/reviews/lisa.jpg",
           quote:
             "Necesitaba español de negocios para mi nuevo puesto. Sofía creó un currículo personalizado con el vocabulario de mi industria. Mi equipo notó la diferencia en 2 meses.",
@@ -414,7 +406,7 @@ export const translations = {
       heading: "Hablemos",
       subheading:
         "¿Tienes preguntas? Envíame un mensaje y te responderé en 24 horas.",
-      timezone: "🕐 Estoy en Los Ángeles (GMT-8)",
+      timezone: "Estoy en Los Ángeles (GMT-8)",
       nameLabel: "Tu nombre",
       emailLabel: "Correo electrónico",
       countryLabel: "País",
@@ -441,7 +433,7 @@ export const translations = {
         "Profesora nativa de español mexicana que ayuda a adultos angloparlantes a desarrollar fluidez real en línea.",
       quickLinks: "Accesos rápidos",
       contactInfo: "Contacto",
-      copyright: "© 2026 Spanish with Sofía. Hecho con ❤️ en Ciudad de México",
+      copyright: "© 2026 Spanish with Sofía. Hecho en Ciudad de México",
     },
     booking: {
       heading: "Reservar una clase",
@@ -468,7 +460,7 @@ export const translations = {
       confirmBtn: "Confirmar reserva",
       backBtn: "Atrás",
       nextBtn: "Siguiente",
-      successHeading: "¡Reserva confirmada! 🎉",
+      successHeading: "¡Reserva confirmada!",
       successMsg:
         "Te enviamos un correo de confirmación. ¡Estoy emocionada de conocerte!",
       errorMsg: "Algo salió mal. Inténtalo de nuevo.",

@@ -43,7 +43,7 @@ export default function Header() {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "4rem" }}>
           {/* Logo */}
           <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <span style={{ fontSize: "1.35rem" }}>🇲🇽</span>
+            <span style={{ width: "0.5rem", height: "0.5rem", borderRadius: "50%", background: "var(--color-primary)", flexShrink: 0, display: "inline-block" }} />
             <span
               style={{
                 fontFamily: "var(--font-fraunces, var(--font-serif))",
