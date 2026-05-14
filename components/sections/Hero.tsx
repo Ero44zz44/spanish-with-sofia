@@ -163,7 +163,7 @@ export default function Hero() {
                 src="/sofia-hero.jpg"
                 alt={`${TUTOR.name} — Native Mexican Spanish Tutor`}
                 fill
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", objectPosition: "center top" }}
                 priority
                 sizes="(max-width: 768px) 100vw, 420px"
               />

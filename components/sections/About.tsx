@@ -50,7 +50,7 @@ export default function About() {
                 src="/sofia-about.jpg"
                 alt={`${TUTOR.name} — About`}
                 fill
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", objectPosition: "center top" }}
                 sizes="(max-width: 768px) 100vw, 480px"
               />
             </div>

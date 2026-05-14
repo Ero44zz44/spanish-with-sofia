@@ -41,4 +41,5 @@ next-env.d.ts
 # screenshots
 *.png
 *.jpg
+*.jpeg
 !public/**
