@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { sendCustomerConfirmation, sendTutorNotification } from "@/lib/email";
 
 export async function GET() {
-  const testEmail = process.env.TUTOR_NOTIFY_EMAIL ?? "plusemotional@gmail.com";
+  const testEmail = process.env.TUTOR_NOTIFY_EMAIL ?? "vibiewebarm@gmail.com";
 
   const customerResult = await sendCustomerConfirmation({
     to: testEmail,

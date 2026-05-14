@@ -10,7 +10,7 @@ export async function POST(request: Request) {
   }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
-  const notifyEmail = process.env.TUTOR_NOTIFY_EMAIL ?? "plusemotional@gmail.com";
+  const notifyEmail = process.env.TUTOR_NOTIFY_EMAIL ?? "vibiewebarm@gmail.com";
 
   try {
     await resend.emails.send({

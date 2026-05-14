@@ -34,7 +34,7 @@ export async function sendTutorNotification(params: {
   timeLabel: string;
   notes?: string;
 }) {
-  const tutorEmail = process.env.TUTOR_NOTIFY_EMAIL ?? "plusemotional@gmail.com";
+  const tutorEmail = process.env.TUTOR_NOTIFY_EMAIL ?? "vibiewebarm@gmail.com";
   return getResend().emails.send({
     from: `Spanish with Sofía <${FROM()}>`,
     to: [tutorEmail],
