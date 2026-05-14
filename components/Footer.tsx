@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Share2 } from "lucide-react";
 import { siteConfig } from "@/lib/config";
 
-const { footer, brand, nav } = siteConfig;
+const { footer, brand } = siteConfig;
 
 export default function Footer() {
   return (
