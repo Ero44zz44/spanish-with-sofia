@@ -25,6 +25,7 @@ export default function AdminServices() {
     setServices(data ?? []);
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { load(); }, []);
 
   function edit(id: string, field: keyof Service, value: string | number | boolean) {

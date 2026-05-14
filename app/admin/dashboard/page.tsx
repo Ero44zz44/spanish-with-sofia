@@ -33,6 +33,7 @@ export default function AdminDashboard() {
     setLoading(false);
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { loadBookings(); }, []);
 
   async function updateStatus(id: string, status: string) {

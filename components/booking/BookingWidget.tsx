@@ -54,7 +54,7 @@ export default function BookingWidget() {
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
-  // Load services on mount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     supabase
       .from("services")

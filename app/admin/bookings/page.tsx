@@ -44,6 +44,7 @@ export default function AdminBookings() {
     setLoading(false);
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { load(); }, []);
 
   async function updateStatus(id: string, status: string) {

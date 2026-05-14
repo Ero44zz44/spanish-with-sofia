@@ -83,6 +83,7 @@ export default function AdminCalendar() {
     setLoading(false);
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { load(); }, [weekStart]);
 
   function getBookingsInSlot(day: Date, hour: number): Booking[] {

@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { TUTOR } from "@/lib/config";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
   const { name, email, country, level, message } = await request.json();
 
@@ -11,11 +9,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const notifyEmail = process.env.TUTOR_NOTIFY_EMAIL ?? "plusemotional@gmail.com";
+
   try {
     await resend.emails.send({
-      from: "Spanish with Sofía <onboarding@resend.dev>",
-      to: [TUTOR.email],
-      replyTo: email,
+      from: `Spanish with Sofía <${process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev"}>`,
+      to: [notifyEmail],
       subject: `New message from ${name}`,
       html: `
         <table width="100%" cellpadding="0" cellspacing="0" style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">

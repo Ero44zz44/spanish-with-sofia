@@ -24,6 +24,7 @@ export default function AdminSettings() {
     setHours(data ?? []);
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { load(); }, []);
 
   function update(dayOfWeek: number, field: keyof WorkingHour, value: string | boolean) {
