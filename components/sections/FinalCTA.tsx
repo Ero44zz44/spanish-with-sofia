@@ -14,39 +14,38 @@ export default function FinalCTA() {
     <section
       className="section"
       style={{
-        background: "var(--color-secondary)",
+        background: "var(--color-primary)",
         position: "relative",
         overflow: "hidden",
       }}
       ref={ref}
     >
-      {/* Warm gradient accents */}
+      {/* Diagonal warm texture */}
       <div
         aria-hidden
         style={{
           position: "absolute",
           inset: 0,
           backgroundImage: `
-            radial-gradient(ellipse at 10% 50%, rgba(217,119,87,0.2) 0%, transparent 55%),
-            radial-gradient(ellipse at 90% 10%, rgba(245,158,11,0.12) 0%, transparent 45%),
-            radial-gradient(ellipse at 70% 90%, rgba(217,119,87,0.1) 0%, transparent 40%)
+            radial-gradient(ellipse at 80% 0%, rgba(255,255,255,0.08) 0%, transparent 55%),
+            radial-gradient(ellipse at 10% 100%, rgba(22,12,7,0.12) 0%, transparent 50%)
           `,
           pointerEvents: "none",
         }}
       />
 
-      {/* Decorative large circle */}
+      {/* Decorative rings */}
       <div
         aria-hidden
         style={{
           position: "absolute",
-          right: "-8rem",
+          right: "-10rem",
           top: "50%",
           transform: "translateY(-50%)",
-          width: "30rem",
-          height: "30rem",
+          width: "34rem",
+          height: "34rem",
           borderRadius: "50%",
-          border: "1px solid rgba(255,255,255,0.04)",
+          border: "1px solid rgba(255,255,255,0.08)",
           pointerEvents: "none",
         }}
       />
@@ -54,48 +53,47 @@ export default function FinalCTA() {
         aria-hidden
         style={{
           position: "absolute",
-          right: "-5rem",
+          right: "-6rem",
           top: "50%",
           transform: "translateY(-50%)",
-          width: "20rem",
-          height: "20rem",
+          width: "22rem",
+          height: "22rem",
           borderRadius: "50%",
-          border: "1px solid rgba(217,119,87,0.08)",
+          border: "1px solid rgba(255,255,255,0.06)",
           pointerEvents: "none",
         }}
       />
 
       <div className="container" style={{ position: "relative", textAlign: "center" }}>
-        {/* Label */}
         <div
           className="fade-up"
           style={{
-            display: "inline-block",
-            fontSize: "0.8rem",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.65rem",
+            fontSize: "0.72rem",
             fontWeight: 600,
-            letterSpacing: "0.1em",
+            letterSpacing: "0.12em",
             textTransform: "uppercase",
-            color: "var(--color-primary)",
-            background: "rgba(217,119,87,0.15)",
-            padding: "0.3rem 1rem",
-            borderRadius: "999px",
+            color: "rgba(255,255,255,0.7)",
             marginBottom: "1.5rem",
-            border: "1px solid rgba(217,119,87,0.25)",
+            justifyContent: "center",
           }}
         >
-          🎁 Free First Lesson
+          <span style={{ display: "inline-block", width: "1.75rem", height: "1.5px", background: "rgba(255,255,255,0.4)", flexShrink: 0 }} />
+          Free First Lesson
         </div>
 
         <h2
           className="fade-up delay-100"
           style={{
-            fontFamily: "var(--font-fraunces, var(--font-serif))",
+            fontFamily: "var(--font-fraunces)",
             fontSize: "clamp(2rem, 5vw, 3.5rem)",
             fontWeight: 900,
-            color: "#FFFFFF",
-            letterSpacing: "-0.02em",
+            color: "var(--color-white)",
+            letterSpacing: "-0.025em",
             marginBottom: "1.25rem",
-            lineHeight: 1.1,
+            lineHeight: 1.06,
           }}
         >
           {f.heading}
@@ -105,7 +103,7 @@ export default function FinalCTA() {
           className="fade-up delay-200"
           style={{
             fontSize: "1.1rem",
-            color: "rgba(255,255,255,0.6)",
+            color: "rgba(255,255,255,0.72)",
             maxWidth: "520px",
             margin: "0 auto 2.75rem",
             lineHeight: 1.75,
@@ -114,12 +112,11 @@ export default function FinalCTA() {
           {f.subheading}
         </p>
 
-        {/* CTA buttons */}
         <div
           className="fade-up delay-300"
           style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}
         >
-          <Link href="/book" className="btn-primary" style={{ fontSize: "1.05rem", padding: "1rem 2.5rem" }}>
+          <Link href="/book" className="btn-white" style={{ fontSize: "1.05rem", padding: "1rem 2.5rem" }}>
             {f.btn} →
           </Link>
           <a
@@ -130,37 +127,36 @@ export default function FinalCTA() {
               gap: "0.5rem",
               padding: "1rem 2rem",
               background: "transparent",
-              color: "rgba(255,255,255,0.7)",
+              color: "rgba(255,255,255,0.8)",
               fontFamily: "var(--font-sans)",
               fontWeight: 600,
               fontSize: "1rem",
               borderRadius: "var(--radius)",
-              border: "1.5px solid rgba(255,255,255,0.15)",
+              border: "1.5px solid rgba(255,255,255,0.25)",
               textDecoration: "none",
               transition: "border-color 0.2s, color 0.2s",
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = "rgba(255,255,255,0.4)";
-              el.style.color = "rgba(255,255,255,0.95)";
+              el.style.borderColor = "rgba(255,255,255,0.55)";
+              el.style.color = "rgba(255,255,255,1)";
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = "rgba(255,255,255,0.15)";
-              el.style.color = "rgba(255,255,255,0.7)";
+              el.style.borderColor = "rgba(255,255,255,0.25)";
+              el.style.color = "rgba(255,255,255,0.8)";
             }}
           >
             ✉ Send a Message
           </a>
         </div>
 
-        {/* Social proof below button */}
         <p
           className="fade-up delay-400"
           style={{
             marginTop: "2.5rem",
             fontSize: "0.85rem",
-            color: "rgba(255,255,255,0.35)",
+            color: "rgba(255,255,255,0.45)",
           }}
         >
           ⭐ {TUTOR.reviewScore}/5 from {TUTOR.reviewCount} reviews · No credit card needed · Cancel anytime

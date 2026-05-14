@@ -14,77 +14,53 @@ export default function Hero() {
       id="home"
       style={{
         background: "var(--color-bg)",
-        padding: "5rem 0 6rem",
+        padding: "5rem 0 7rem",
         overflow: "hidden",
         position: "relative",
       }}
     >
-      {/* Decorative blobs */}
+      {/* Warm surface panel — right half background */}
       <div
         aria-hidden
         style={{
           position: "absolute",
-          top: "-8rem",
-          right: "-8rem",
-          width: "40rem",
-          height: "40rem",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(217,119,87,0.12) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          bottom: "-4rem",
-          left: "-6rem",
-          width: "28rem",
-          height: "28rem",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%)",
+          top: 0,
+          right: 0,
+          width: "48%",
+          height: "100%",
+          background: "var(--color-surface)",
+          clipPath: "polygon(6% 0, 100% 0, 100% 100%, 0% 100%)",
           pointerEvents: "none",
         }}
       />
 
       <div className="container" style={{ position: "relative" }}>
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "4rem",
-            alignItems: "center",
-          }}
           className="hero-grid"
+          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}
         >
           {/* Text column */}
           <div>
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                fontSize: "0.82rem",
+            {/* Editorial label */}
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "2rem" }}>
+              <div style={{ width: "2rem", height: "1.5px", background: "var(--color-primary)", flexShrink: 0 }} />
+              <span style={{
+                fontSize: "0.72rem",
                 fontWeight: 600,
-                letterSpacing: "0.06em",
+                letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: "var(--color-primary)",
-                background: "rgba(217,119,87,0.1)",
-                padding: "0.35rem 1rem",
-                borderRadius: "999px",
-                marginBottom: "1.75rem",
-                border: "1px solid rgba(217,119,87,0.2)",
-              }}
-            >
-              {h.label}
+              }}>
+                {h.label}
+              </span>
             </div>
 
             <h1
               style={{
-                fontFamily: "var(--font-fraunces, var(--font-serif))",
-                fontSize: "clamp(2.5rem, 5vw, 3.75rem)",
+                fontFamily: "var(--font-fraunces)",
+                fontSize: "clamp(2.75rem, 5.5vw, 4rem)",
                 fontWeight: 900,
-                lineHeight: 1.08,
+                lineHeight: 1.06,
                 color: "var(--color-secondary)",
                 marginBottom: "1.5rem",
                 letterSpacing: "-0.03em",
@@ -93,69 +69,76 @@ export default function Hero() {
               {h.headline}
             </h1>
 
-            <p
-              style={{
-                fontSize: "1.1rem",
-                lineHeight: 1.75,
-                color: "var(--color-muted)",
-                marginBottom: "2.5rem",
-                maxWidth: "480px",
-              }}
-            >
+            <p style={{
+              fontSize: "1.075rem",
+              lineHeight: 1.8,
+              color: "var(--color-muted)",
+              marginBottom: "2.5rem",
+              maxWidth: "440px",
+            }}>
               {h.subheadline}
             </p>
 
-            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "3rem" }}>
-              <Link href="/book" className="btn-primary" style={{ fontSize: "1rem", padding: "0.9rem 2rem" }}>
+            <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap", marginBottom: "3.25rem" }}>
+              <Link href="/book" className="btn-primary" style={{ fontSize: "1rem", padding: "0.95rem 2rem" }}>
                 {h.ctaPrimary} →
               </Link>
-              <button
-                className="btn-outline"
-                style={{ fontSize: "1rem", padding: "0.9rem 1.75rem" }}
-              >
-                ▶ {h.ctaSecondary}
-              </button>
+              <a href="#reviews" className="btn-outline" style={{ fontSize: "1rem", padding: "0.95rem 1.75rem" }}>
+                See reviews
+              </a>
             </div>
 
-            {/* Trust badges */}
-            <div
-              style={{
-                display: "flex",
-                gap: "1.5rem",
-                flexWrap: "wrap",
-                borderTop: "1px solid var(--color-border)",
-                paddingTop: "1.75rem",
-              }}
-            >
-              {[h.trust1, h.trust2, h.trust3].map((badge) => (
-                <span
-                  key={badge}
+            {/* Trust stats — editorial row */}
+            <div style={{
+              display: "flex",
+              gap: "0",
+              borderTop: "1px solid var(--color-border)",
+              paddingTop: "1.75rem",
+            }}>
+              {[
+                { num: `${TUTOR.reviewScore}/5`, label: "student rating" },
+                { num: TUTOR.studentCount, label: "students taught" },
+                { num: `${TUTOR.countryCount}`, label: "countries" },
+              ].map((stat, i) => (
+                <div
+                  key={i}
                   style={{
-                    fontSize: "0.875rem",
-                    fontWeight: 600,
-                    color: "var(--color-secondary)",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.35rem",
+                    flex: 1,
+                    paddingRight: i < 2 ? "1.5rem" : 0,
+                    borderRight: i < 2 ? "1px solid var(--color-border)" : "none",
+                    marginRight: i < 2 ? "1.5rem" : 0,
                   }}
                 >
-                  {badge}
-                </span>
+                  <div style={{
+                    fontFamily: "var(--font-fraunces)",
+                    fontSize: "1.5rem",
+                    fontWeight: 700,
+                    color: "var(--color-secondary)",
+                    lineHeight: 1,
+                  }}>
+                    {stat.num}
+                  </div>
+                  <div style={{ fontSize: "0.76rem", color: "var(--color-muted)", marginTop: "0.25rem", fontWeight: 500 }}>
+                    {stat.label}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
 
           {/* Photo column */}
-          <div style={{ display: "flex", justifyContent: "center", position: "relative" }}>
-            {/* Decorative ring behind the photo */}
+          <div style={{ position: "relative", display: "flex", justifyContent: "center" }}>
+            {/* Offset terracotta shadow shape */}
             <div
               aria-hidden
               style={{
                 position: "absolute",
-                inset: "-1.5rem",
-                borderRadius: "2rem",
-                background:
-                  "linear-gradient(135deg, rgba(217,119,87,0.25) 0%, rgba(245,158,11,0.15) 100%)",
+                bottom: "-2.5rem",
+                right: "-1.5rem",
+                width: "75%",
+                height: "82%",
+                borderRadius: "1.5rem",
+                background: "rgba(192,90,53,0.14)",
                 zIndex: 0,
               }}
             />
@@ -164,11 +147,11 @@ export default function Hero() {
               style={{
                 position: "relative",
                 width: "100%",
-                maxWidth: "440px",
-                aspectRatio: "4/5",
-                borderRadius: "1.75rem",
+                maxWidth: "420px",
+                aspectRatio: "3/4",
+                borderRadius: "1.5rem",
                 overflow: "hidden",
-                boxShadow: "0 24px 60px rgba(0,0,0,0.15), 0 8px 20px rgba(0,0,0,0.08)",
+                boxShadow: "0 24px 64px rgba(22,12,7,0.18), 0 8px 24px rgba(22,12,7,0.1)",
                 zIndex: 1,
               }}
             >
@@ -178,66 +161,49 @@ export default function Hero() {
                 fill
                 style={{ objectFit: "cover" }}
                 priority
-                sizes="(max-width: 768px) 100vw, 440px"
+                sizes="(max-width: 768px) 100vw, 420px"
               />
 
               {/* Rating badge */}
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "1.5rem",
-                  left: "1.5rem",
-                  background: "rgba(255,255,255,0.95)",
-                  backdropFilter: "blur(8px)",
-                  borderRadius: "1rem",
-                  padding: "0.85rem 1.25rem",
-                  boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.6rem",
-                }}
-              >
-                <div
-                  style={{
-                    width: "2.25rem",
-                    height: "2.25rem",
-                    borderRadius: "50%",
-                    background: "var(--color-accent)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "1rem",
-                  }}
-                >
-                  ⭐
-                </div>
+              <div style={{
+                position: "absolute",
+                bottom: "1.5rem",
+                left: "1.5rem",
+                background: "rgba(250,246,239,0.96)",
+                backdropFilter: "blur(10px)",
+                borderRadius: "0.875rem",
+                padding: "0.875rem 1.25rem",
+                boxShadow: "0 8px 32px rgba(22,12,7,0.16)",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.75rem",
+              }}>
+                <div style={{ color: "var(--color-accent)", fontSize: "0.875rem", letterSpacing: "0.05em" }}>★★★★★</div>
                 <div>
-                  <div style={{ fontWeight: 800, fontSize: "1rem", color: "var(--color-secondary)", lineHeight: 1 }}>
-                    {TUTOR.reviewScore}/5
+                  <div style={{ fontWeight: 700, fontSize: "0.9rem", color: "var(--color-secondary)", lineHeight: 1 }}>
+                    {TUTOR.reviewScore} / 5
                   </div>
-                  <div style={{ fontSize: "0.72rem", color: "var(--color-muted)", marginTop: "0.15rem" }}>
+                  <div style={{ fontSize: "0.7rem", color: "var(--color-muted)", marginTop: "0.15rem" }}>
                     {TUTOR.reviewCount} verified reviews
                   </div>
                 </div>
               </div>
 
-              {/* Students badge */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: "1.5rem",
-                  right: "1.5rem",
-                  background: "var(--color-primary)",
-                  borderRadius: "0.85rem",
-                  padding: "0.65rem 1rem",
-                  boxShadow: "0 8px 24px rgba(217,119,87,0.4)",
-                  textAlign: "center",
-                }}
-              >
-                <div style={{ fontWeight: 900, fontSize: "1.1rem", color: "white", lineHeight: 1 }}>
+              {/* Students pill */}
+              <div style={{
+                position: "absolute",
+                top: "1.5rem",
+                right: "1.5rem",
+                background: "var(--color-secondary)",
+                borderRadius: "0.75rem",
+                padding: "0.6rem 1rem",
+                boxShadow: "0 8px 24px rgba(22,12,7,0.3)",
+                textAlign: "center",
+              }}>
+                <div style={{ fontWeight: 800, fontSize: "1.05rem", color: "white", lineHeight: 1 }}>
                   {TUTOR.studentCount}
                 </div>
-                <div style={{ fontSize: "0.68rem", color: "rgba(255,255,255,0.85)", marginTop: "0.1rem" }}>
+                <div style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.65)", marginTop: "0.1rem" }}>
                   students
                 </div>
               </div>

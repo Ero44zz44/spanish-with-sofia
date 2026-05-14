@@ -207,14 +207,6 @@ export default function Header() {
         </div>
       )}
 
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .hidden-mobile { display: none !important; }
-        }
-        @media (min-width: 769px) {
-          .show-mobile { display: none !important; }
-        }
-      `}</style>
     </header>
   );
 }

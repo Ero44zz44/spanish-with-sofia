@@ -15,24 +15,22 @@ export default function About() {
     <section id="about" className="section" style={{ background: "var(--color-white)" }} ref={ref}>
       <div className="container">
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1.2fr",
-            gap: "5rem",
-            alignItems: "center",
-          }}
           className="about-grid"
+          style={{ display: "grid", gridTemplateColumns: "1fr 1.25fr", gap: "5rem", alignItems: "center" }}
         >
           {/* Photo */}
           <div className="fade-up" style={{ position: "relative" }}>
-            {/* Decorative ring */}
+            {/* Terracotta background shape */}
             <div
               aria-hidden
               style={{
                 position: "absolute",
-                inset: "-1rem",
-                borderRadius: "2rem",
-                background: "linear-gradient(135deg, rgba(217,119,87,0.15) 0%, rgba(245,158,11,0.1) 100%)",
+                top: "2rem",
+                left: "-1.5rem",
+                width: "88%",
+                height: "90%",
+                borderRadius: "1.5rem",
+                background: "var(--color-surface)",
                 zIndex: 0,
               }}
             />
@@ -40,9 +38,9 @@ export default function About() {
               style={{
                 position: "relative",
                 aspectRatio: "3/4",
-                borderRadius: "1.75rem",
+                borderRadius: "1.5rem",
                 overflow: "hidden",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.12)",
+                boxShadow: "0 20px 56px rgba(22,12,7,0.14)",
                 zIndex: 1,
               }}
             >
@@ -54,33 +52,32 @@ export default function About() {
                 sizes="(max-width: 768px) 100vw, 480px"
               />
             </div>
-            {/* Floating years card */}
+
+            {/* Years badge */}
             <div
               style={{
                 position: "absolute",
-                bottom: "-1.5rem",
-                right: "-1.5rem",
+                bottom: "-1.75rem",
+                right: "-1.75rem",
                 background: "var(--color-primary)",
                 color: "var(--color-white)",
                 borderRadius: "1.25rem",
                 padding: "1.25rem 1.5rem",
-                boxShadow: "0 12px 32px rgba(217,119,87,0.4)",
+                boxShadow: "0 12px 36px rgba(192,90,53,0.4)",
                 zIndex: 2,
-                minWidth: "8rem",
+                minWidth: "8.5rem",
                 textAlign: "center",
               }}
             >
-              <div
-                style={{
-                  fontSize: "2.5rem",
-                  fontWeight: 900,
-                  fontFamily: "var(--font-fraunces, var(--font-serif))",
-                  lineHeight: 1,
-                }}
-              >
+              <div style={{
+                fontSize: "2.75rem",
+                fontWeight: 900,
+                fontFamily: "var(--font-fraunces)",
+                lineHeight: 1,
+              }}>
                 {TUTOR.yearsExperience}+
               </div>
-              <div style={{ fontSize: "0.8rem", opacity: 0.85, marginTop: "0.3rem", fontWeight: 500 }}>
+              <div style={{ fontSize: "0.78rem", opacity: 0.85, marginTop: "0.35rem", fontWeight: 500 }}>
                 years teaching
               </div>
             </div>
@@ -89,12 +86,12 @@ export default function About() {
             <div
               style={{
                 position: "absolute",
-                top: "1.5rem",
-                right: "-1rem",
+                top: "1.25rem",
+                right: "-1.25rem",
                 background: "var(--color-white)",
-                borderRadius: "1rem",
+                borderRadius: "0.875rem",
                 padding: "0.75rem 1.1rem",
-                boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
+                boxShadow: "0 8px 28px rgba(22,12,7,0.1)",
                 zIndex: 2,
                 display: "flex",
                 alignItems: "center",
@@ -118,44 +115,44 @@ export default function About() {
             <h2
               className="fade-up delay-100"
               style={{
-                fontFamily: "var(--font-fraunces, var(--font-serif))",
+                fontFamily: "var(--font-fraunces)",
                 fontSize: "clamp(2rem, 4vw, 2.75rem)",
                 fontWeight: 800,
-                lineHeight: 1.15,
+                lineHeight: 1.12,
                 color: "var(--color-secondary)",
-                marginBottom: "1.5rem",
-                letterSpacing: "-0.02em",
+                marginBottom: "1.75rem",
+                letterSpacing: "-0.025em",
               }}
             >
               {a.heading}
             </h2>
 
-            <div className="fade-up delay-200" style={{ display: "flex", flexDirection: "column", gap: "0.875rem", marginBottom: "2rem" }}>
+            <div className="fade-up delay-200" style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "2.25rem" }}>
               {a.story.slice(0, 3).map((para, i) => (
-                <p key={i} style={{ fontSize: "1rem", lineHeight: 1.8, color: "var(--color-muted)" }}>
+                <p key={i} style={{ fontSize: "1rem", lineHeight: 1.85, color: "var(--color-muted)" }}>
                   {para}
                 </p>
               ))}
             </div>
 
-            {/* Credential pills */}
-            <div className="fade-up delay-300" style={{ marginBottom: "2rem" }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
+            {/* Credentials — 2-column grid */}
+            <div className="fade-up delay-300" style={{ marginBottom: "2.25rem" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.625rem" }}>
                 {a.credentials.map((c, i) => (
                   <div
                     key={i}
                     style={{
                       display: "flex",
-                      alignItems: "center",
-                      gap: "0.75rem",
-                      padding: "0.7rem 1rem",
-                      background: "rgba(217,119,87,0.06)",
-                      borderRadius: "0.625rem",
-                      border: "1px solid rgba(217,119,87,0.1)",
+                      alignItems: "flex-start",
+                      gap: "0.625rem",
+                      padding: "0.875rem 1rem",
+                      background: "var(--color-bg)",
+                      borderRadius: "var(--radius-sm)",
+                      border: "1px solid var(--color-border)",
                     }}
                   >
-                    <span style={{ fontSize: "1.1rem", flexShrink: 0 }}>{c.split(" ")[0]}</span>
-                    <span style={{ fontSize: "0.9rem", fontWeight: 500, color: "var(--color-secondary)", lineHeight: 1.4 }}>
+                    <span style={{ fontSize: "1rem", flexShrink: 0, marginTop: "1px" }}>{c.split(" ")[0]}</span>
+                    <span style={{ fontSize: "0.85rem", fontWeight: 500, color: "var(--color-secondary)", lineHeight: 1.4 }}>
                       {c.split(" ").slice(1).join(" ")}
                     </span>
                   </div>

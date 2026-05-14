@@ -15,35 +15,36 @@ export default function FAQ() {
       <div className="container">
         <div style={{ maxWidth: "740px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <div className="section-label fade-up">{f.heading}</div>
+            <div className="section-label fade-up" style={{ justifyContent: "center" }}>{f.heading}</div>
             <h2
               className="fade-up delay-100"
               style={{
-                fontFamily: "var(--font-fraunces, var(--font-serif))",
-                fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
+                fontFamily: "var(--font-fraunces)",
+                fontSize: "clamp(1.9rem, 4vw, 2.5rem)",
                 fontWeight: 800,
                 color: "var(--color-secondary)",
                 marginTop: "0.5rem",
-                letterSpacing: "-0.02em",
+                letterSpacing: "-0.025em",
+                lineHeight: 1.1,
               }}
             >
               {f.heading}
             </h2>
           </div>
 
-          <div className="fade-up delay-200" style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+          <div className="fade-up delay-200" style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             {f.items.map((item, i) => {
               const isOpen = open === i;
               return (
                 <div
                   key={i}
                   style={{
-                    background: isOpen ? "var(--color-white)" : "var(--color-white)",
-                    border: `1.5px solid ${isOpen ? "var(--color-primary)" : "var(--color-border)"}`,
+                    background: "var(--color-white)",
+                    border: "1.5px solid var(--color-border)",
+                    borderLeft: `3px solid ${isOpen ? "var(--color-primary)" : "transparent"}`,
                     borderRadius: "var(--radius)",
                     overflow: "hidden",
-                    transition: "border-color 0.25s",
-                    boxShadow: isOpen ? "0 4px 20px rgba(217,119,87,0.1)" : "none",
+                    transition: "border-left-color 0.25s",
                   }}
                 >
                   <button
@@ -62,7 +63,7 @@ export default function FAQ() {
                       border: "none",
                       textAlign: "left",
                       fontFamily: "var(--font-sans)",
-                      transition: "color 0.25s",
+                      transition: "color 0.2s",
                     }}
                     aria-expanded={isOpen}
                   >
@@ -70,10 +71,10 @@ export default function FAQ() {
                     <span
                       style={{
                         flexShrink: 0,
-                        width: "1.75rem",
-                        height: "1.75rem",
+                        width: "1.6rem",
+                        height: "1.6rem",
                         borderRadius: "50%",
-                        background: isOpen ? "var(--color-primary)" : "rgba(217,119,87,0.1)",
+                        background: isOpen ? "var(--color-primary)" : "var(--color-surface)",
                         color: isOpen ? "white" : "var(--color-primary)",
                         display: "flex",
                         alignItems: "center",
@@ -98,11 +99,11 @@ export default function FAQ() {
                     <div
                       style={{
                         padding: "0 1.5rem 1.5rem",
+                        paddingTop: "0.875rem",
                         fontSize: "0.95rem",
-                        lineHeight: 1.8,
+                        lineHeight: 1.85,
                         color: "var(--color-muted)",
                         borderTop: "1px solid var(--color-border)",
-                        paddingTop: "1rem",
                       }}
                     >
                       {item.answer}

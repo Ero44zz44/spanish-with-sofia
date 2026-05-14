@@ -199,17 +199,6 @@ export default function Contact() {
         </div>
       </div>
 
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .contact-grid {
-            grid-template-columns: 1fr !important;
-            gap: 3rem !important;
-          }
-          .form-row {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
