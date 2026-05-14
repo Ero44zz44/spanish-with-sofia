@@ -1,71 +1,76 @@
 "use client";
 
 import Link from "next/link";
-import { useLanguage } from "@/lib/language-context";
-import { TUTOR } from "@/lib/config";
+import { Share2 } from "lucide-react";
+import { siteConfig } from "@/lib/config";
+
+const { footer, brand, nav } = siteConfig;
 
 export default function Footer() {
-  const { t } = useLanguage();
-
-  const quickLinks = [
-    { href: "#about", label: t.nav.about },
-    { href: "#lessons", label: t.nav.lessons },
-    { href: "#reviews", label: t.nav.reviews },
-    { href: "#faq", label: t.nav.faq },
-    { href: "/book", label: t.nav.bookTrial },
-  ];
-
   return (
-    <footer style={{ background: "var(--color-secondary)", color: "rgba(255,255,255,0.8)", padding: "3.5rem 0 1.5rem" }}>
+    <footer style={{ background: "var(--color-secondary)", color: "rgba(255,255,255,0.75)", padding: "4rem 0 1.75rem" }}>
       <div className="container">
         <div
           className="footer-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "2.5rem",
-            paddingBottom: "2.5rem",
-            borderBottom: "1px solid rgba(255,255,255,0.1)",
-          }}
+          style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: "3rem", paddingBottom: "3rem", borderBottom: "1px solid rgba(255,255,255,0.08)" }}
         >
           {/* Brand */}
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1rem" }}>
-              <span style={{ width: "0.4rem", height: "0.4rem", borderRadius: "50%", background: "var(--color-primary)", flexShrink: 0, display: "inline-block" }} />
+              <span style={{ width: "0.45rem", height: "0.45rem", borderRadius: "50%", background: "var(--color-primary)", display: "inline-block", flexShrink: 0 }} />
               <span style={{ fontFamily: "var(--font-fraunces, var(--font-serif))", fontWeight: 700, fontSize: "1.1rem", color: "var(--color-white)" }}>
-                Sofía Martínez
+                {brand.name}
               </span>
             </div>
-            <p style={{ fontSize: "0.9rem", lineHeight: 1.6, maxWidth: "240px" }}>
-              {t.footer.description}
+            <p style={{ fontSize: "0.9rem", lineHeight: 1.7, maxWidth: "260px", marginBottom: "1.5rem" }}>
+              {footer.tagline}
             </p>
-            <div style={{ display: "flex", gap: "0.75rem", marginTop: "1.25rem" }}>
-              <a
-                href={TUTOR.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none", fontSize: "0.85rem", transition: "color 0.2s" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-primary-light)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
-              >
-                Instagram
-              </a>
-            </div>
+            <a
+              href={brand.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", color: "rgba(255,255,255,0.6)", textDecoration: "none", fontSize: "0.875rem", transition: "color 0.2s" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-primary-light)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
+            >
+              <Share2 size={16} /> {brand.instagramHandle}
+            </a>
           </div>
 
-          {/* Quick links */}
+          {/* Navigate */}
           <div>
-            <h4 style={{ color: "var(--color-white)", fontWeight: 600, marginBottom: "1rem", fontSize: "0.9rem", textTransform: "uppercase", letterSpacing: "0.06em" }}>
-              {t.footer.quickLinks}
+            <h4 style={{ color: "var(--color-white)", fontWeight: 600, marginBottom: "1rem", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+              {footer.columns.navigate.label}
             </h4>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-              {quickLinks.map((l) => (
+              {footer.columns.navigate.links.map((l) => (
                 <li key={l.href}>
+                  <a
+                    href={l.href}
+                    style={{ color: "rgba(255,255,255,0.65)", textDecoration: "none", fontSize: "0.9rem", transition: "color 0.2s" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-white)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.65)")}
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Lessons */}
+          <div>
+            <h4 style={{ color: "var(--color-white)", fontWeight: 600, marginBottom: "1rem", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+              {footer.columns.lessons.label}
+            </h4>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+              {footer.columns.lessons.links.map((l, i) => (
+                <li key={i}>
                   <Link
                     href={l.href}
-                    style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none", fontSize: "0.9rem", transition: "color 0.2s" }}
+                    style={{ color: "rgba(255,255,255,0.65)", textDecoration: "none", fontSize: "0.9rem", transition: "color 0.2s" }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-white)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.65)")}
                   >
                     {l.label}
                   </Link>
@@ -73,27 +78,24 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
-          {/* Contact */}
-          <div>
-            <h4 style={{ color: "var(--color-white)", fontWeight: 600, marginBottom: "1rem", fontSize: "0.9rem", textTransform: "uppercase", letterSpacing: "0.06em" }}>
-              {t.footer.contactInfo}
-            </h4>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem", fontSize: "0.9rem" }}>
-              <a href={`mailto:${TUTOR.email}`} style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none" }}>
-                {TUTOR.email}
-              </a>
-              <a href={TUTOR.whatsapp} target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none" }}>
-                {TUTOR.phone}
-              </a>
-              <span style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem" }}>{TUTOR.tzLabel}</span>
-            </div>
-          </div>
         </div>
 
-        <p style={{ textAlign: "center", fontSize: "0.85rem", color: "rgba(255,255,255,0.4)", marginTop: "1.5rem" }}>
-          {t.footer.copyright}
-        </p>
+        {/* Bottom bar */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: "1.5rem", gap: "1rem", flexWrap: "wrap" }}>
+          <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.35)", margin: 0 }}>
+            {footer.copyright} · Made in {footer.madeIn}
+          </p>
+          <div style={{ display: "flex", gap: "1.5rem" }}>
+            <a
+              href={`mailto:${brand.email}`}
+              style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.35)", textDecoration: "none", transition: "color 0.2s" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.35)")}
+            >
+              {brand.email}
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );

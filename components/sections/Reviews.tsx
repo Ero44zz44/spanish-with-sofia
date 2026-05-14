@@ -1,192 +1,122 @@
 "use client";
 
-import { useLanguage } from "@/lib/language-context";
-import { useFadeIn } from "@/lib/use-fade-in";
-import { TUTOR } from "@/lib/config";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { siteConfig } from "@/lib/config";
+
+const c = siteConfig.testimonials;
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+};
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
 
 export default function Reviews() {
-  const { t } = useLanguage();
-  const r = t.reviews;
-  const ref = useFadeIn();
-
   return (
     <section
       id="reviews"
-      className="section"
-      style={{ background: "var(--color-secondary)", position: "relative", overflow: "hidden" }}
-      ref={ref}
+      style={{ background: "var(--color-white)", padding: "7rem 0", position: "relative", overflow: "hidden" }}
     >
-      {/* Warm radial glow */}
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          bottom: "-6rem",
-          right: "-6rem",
-          width: "40rem",
-          height: "40rem",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(192,90,53,0.09) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-
-      <div className="container" style={{ position: "relative" }}>
+      <div className="container">
         {/* Header */}
-        <div style={{ marginBottom: "3.5rem" }}>
-          <div
-            className="fade-up"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.65rem",
-              fontSize: "0.72rem",
-              fontWeight: 600,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              color: "var(--color-primary-light)",
-              marginBottom: "1.1rem",
-            }}
-          >
-            <span style={{ display: "inline-block", width: "1.75rem", height: "1.5px", background: "var(--color-primary)", flexShrink: 0 }} />
-            {r.heading}
-          </div>
-
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap" }}>
-            <h2
-              className="fade-up delay-100"
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "2rem", marginBottom: "4rem", flexWrap: "wrap" }}
+        >
+          <div>
+            <motion.div variants={fadeUp} style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "1.1rem" }}>
+              <span style={{ width: "1.75rem", height: "1.5px", background: "var(--color-primary)", display: "inline-block" }} />
+              <span style={{ fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-primary)" }}>
+                {c.eyebrow}
+              </span>
+            </motion.div>
+            <motion.h2
+              variants={fadeUp}
               style={{
                 fontFamily: "var(--font-fraunces)",
-                fontSize: "clamp(1.9rem, 4vw, 2.75rem)",
+                fontSize: "clamp(2rem, 4vw, 2.75rem)",
                 fontWeight: 800,
-                color: "var(--color-white)",
-                letterSpacing: "-0.025em",
+                color: "var(--color-secondary)",
+                letterSpacing: "-0.03em",
                 lineHeight: 1.1,
-                maxWidth: "480px",
               }}
             >
-              What My Students Say
-            </h2>
-            <div className="fade-up delay-200" style={{ textAlign: "right" }}>
-              <div style={{ color: "var(--color-accent)", fontSize: "1rem", letterSpacing: "0.05em" }}>★★★★★</div>
-              <div style={{ fontFamily: "var(--font-fraunces)", fontSize: "1.5rem", fontWeight: 700, color: "var(--color-white)", lineHeight: 1 }}>
-                {TUTOR.reviewScore} / 5
-              </div>
-              <div style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.4)", marginTop: "0.2rem" }}>
-                {TUTOR.reviewCount} reviews
-              </div>
-            </div>
+              {c.headline}
+            </motion.h2>
           </div>
-        </div>
+          <motion.div variants={fadeUp} style={{ textAlign: "right" }}>
+            <div style={{ color: "var(--color-accent)", fontSize: "1rem", letterSpacing: "0.08em" }}>★★★★★</div>
+            <div style={{ fontFamily: "var(--font-fraunces)", fontSize: "1.6rem", fontWeight: 800, color: "var(--color-secondary)", lineHeight: 1 }}>
+              {c.ratingScore} / 5
+            </div>
+            <div style={{ fontSize: "0.78rem", color: "var(--color-muted)", marginTop: "0.2rem" }}>{c.ratingCount}</div>
+          </motion.div>
+        </motion.div>
 
-        {/* Cards */}
-        <div
-          className="fade-up delay-200"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "1.25rem",
-          }}
+        {/* Masonry-style grid */}
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
           id="reviews-grid"
+          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem", alignItems: "start" }}
         >
-          {r.items.map((item, i) => (
-            <div
+          {c.items.map((item, i) => (
+            <motion.div
               key={i}
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 260, damping: 20 }}
               style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.08)",
+                background: "var(--color-bg)",
                 borderRadius: "1rem",
-                padding: "2rem",
+                padding: "1.75rem",
+                border: "1px solid var(--color-border)",
                 display: "flex",
                 flexDirection: "column",
-                gap: "1.25rem",
-                position: "relative",
-                overflow: "hidden",
-                transition: "border-color 0.25s, transform 0.25s",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(192,90,53,0.3)";
-                (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.08)";
-                (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
+                gap: "1rem",
               }}
             >
-              {/* Giant quote mark */}
-              <div
-                aria-hidden
-                style={{
-                  position: "absolute",
-                  top: "0.5rem",
-                  right: "1.25rem",
-                  fontFamily: "var(--font-fraunces)",
-                  fontSize: "6rem",
-                  fontWeight: 900,
-                  lineHeight: 1,
-                  color: "rgba(192,90,53,0.12)",
-                  userSelect: "none",
-                  pointerEvents: "none",
-                }}
-              >
-                &ldquo;
-              </div>
-
               {/* Stars */}
               <div style={{ color: "var(--color-accent)", fontSize: "0.85rem", letterSpacing: "0.05em" }}>★★★★★</div>
 
               {/* Quote */}
-              <p
-                style={{
-                  fontSize: "0.975rem",
-                  lineHeight: 1.85,
-                  color: "rgba(255,255,255,0.78)",
-                  flex: 1,
-                  fontStyle: "italic",
-                }}
-              >
+              <p style={{ fontSize: "0.925rem", lineHeight: 1.85, color: "var(--color-secondary)", flex: 1, fontStyle: "italic" }}>
                 &ldquo;{item.quote}&rdquo;
               </p>
 
               {/* Author */}
-              <div
-                style={{
+              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", borderTop: "1px solid var(--color-border)", paddingTop: "1rem" }}>
+                <div style={{
+                  width: "2.25rem",
+                  height: "2.25rem",
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                  background: "var(--color-primary)",
+                  flexShrink: 0,
                   display: "flex",
                   alignItems: "center",
-                  gap: "0.85rem",
-                  borderTop: "1px solid rgba(255,255,255,0.07)",
-                  paddingTop: "1.25rem",
-                }}
-              >
-                <div
-                  style={{
-                    width: "2.5rem",
-                    height: "2.5rem",
-                    borderRadius: "50%",
-                    background: "var(--color-primary)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontWeight: 700,
-                    fontSize: "0.9rem",
-                    color: "white",
-                    flexShrink: 0,
-                  }}
-                >
+                  justifyContent: "center",
+                  fontWeight: 700,
+                  fontSize: "0.85rem",
+                  color: "white",
+                  position: "relative",
+                }}>
                   {item.name.charAt(0)}
                 </div>
                 <div>
-                  <div style={{ fontWeight: 700, fontSize: "0.88rem", color: "var(--color-white)" }}>
-                    {item.name}
-                  </div>
-                  <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", marginTop: "0.1rem" }}>
-                    {item.country}
-                  </div>
+                  <div style={{ fontWeight: 700, fontSize: "0.85rem", color: "var(--color-secondary)", lineHeight: 1.2 }}>{item.name}</div>
+                  <div style={{ fontSize: "0.75rem", color: "var(--color-muted)", marginTop: "0.1rem" }}>{item.location}</div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

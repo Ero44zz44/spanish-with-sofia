@@ -41,16 +41,9 @@ body {
 .font-serif { font-family: var(--font-serif); }
 .font-sans  { font-family: var(--font-sans); }
 
-/* Scroll animations */
-.fade-up {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Scroll animations — now handled by Framer Motion */
+.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
 
 /* Buttons */
 .btn-primary {
@@ -322,6 +315,7 @@ body {
   #reviews-grid { grid-template-columns: 1fr !important; }
 
   .footer-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  #lessons-grid { grid-template-columns: 1fr !important; }
 
   /* About credentials: single column on very small */
   .about-credentials { grid-template-columns: 1fr !important; }

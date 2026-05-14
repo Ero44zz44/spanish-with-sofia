@@ -1,165 +1,146 @@
 "use client";
 
 import Link from "next/link";
-import { useLanguage } from "@/lib/language-context";
-import { useFadeIn } from "@/lib/use-fade-in";
+import { motion } from "framer-motion";
+import { CalendarCheck, Video, TrendingUp } from "lucide-react";
+import { siteConfig } from "@/lib/config";
+
+const c = siteConfig.process;
+
+const iconMap = { CalendarCheck, Video, TrendingUp };
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+};
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.15 } } };
 
 export default function HowItWorks() {
-  const { t } = useLanguage();
-  const h = t.howItWorks;
-  const ref = useFadeIn();
-
   return (
-    <section
-      className="section"
-      style={{ background: "var(--color-secondary)", position: "relative", overflow: "hidden" }}
-      ref={ref}
-    >
-      {/* Subtle warm glow */}
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          top: "-8rem",
-          left: "-8rem",
-          width: "36rem",
-          height: "36rem",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(192,90,53,0.08) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-
-      <div className="container" style={{ position: "relative" }}>
-        <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-          <div
-            className="fade-up"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.65rem",
-              fontSize: "0.72rem",
-              fontWeight: 600,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              color: "var(--color-primary-light)",
-              marginBottom: "1.1rem",
-            }}
-          >
-            <span style={{ display: "inline-block", width: "1.75rem", height: "1.5px", background: "var(--color-primary)", flexShrink: 0 }} />
-            {h.heading}
-          </div>
-          <h2
-            className="fade-up delay-100"
+    <section style={{ background: "var(--color-bg)", padding: "7rem 0", position: "relative" }}>
+      <div className="container">
+        {/* Header */}
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          style={{ textAlign: "center", marginBottom: "5rem" }}
+        >
+          <motion.div variants={fadeUp} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.65rem", marginBottom: "1.1rem" }}>
+            <span style={{ width: "1.75rem", height: "1.5px", background: "var(--color-primary)", display: "inline-block" }} />
+            <span style={{ fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-primary)" }}>
+              {c.eyebrow}
+            </span>
+          </motion.div>
+          <motion.h2
+            variants={fadeUp}
             style={{
               fontFamily: "var(--font-fraunces)",
-              fontSize: "clamp(1.9rem, 4vw, 2.75rem)",
+              fontSize: "clamp(2rem, 4vw, 2.75rem)",
               fontWeight: 800,
-              color: "var(--color-white)",
-              letterSpacing: "-0.025em",
+              color: "var(--color-secondary)",
+              letterSpacing: "-0.03em",
               lineHeight: 1.1,
             }}
           >
-            {h.heading}
-          </h2>
-          <p className="fade-up delay-200" style={{ color: "rgba(255,255,255,0.5)", fontSize: "1.05rem", marginTop: "0.75rem" }}>
-            {h.subheading}
-          </p>
-        </div>
+            {c.headline}
+          </motion.h2>
+        </motion.div>
 
-        <div
-          className="fade-up delay-200"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "1.25rem",
-          }}
+        {/* Steps */}
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
           id="steps-grid"
+          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2rem", position: "relative", marginBottom: "4rem" }}
         >
-          {h.steps.map((step, i) => (
-            <div
-              key={i}
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                borderRadius: "1rem",
-                padding: "2rem",
-                position: "relative",
-                overflow: "hidden",
-                transition: "border-color 0.25s, background 0.25s",
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLDivElement;
-                el.style.borderColor = "rgba(192,90,53,0.3)";
-                el.style.background = "rgba(255,255,255,0.06)";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLDivElement;
-                el.style.borderColor = "rgba(255,255,255,0.08)";
-                el.style.background = "rgba(255,255,255,0.04)";
-              }}
-            >
-              {/* Faded giant step number */}
-              <div
-                aria-hidden
-                style={{
-                  position: "absolute",
-                  bottom: "-1rem",
-                  right: "0.75rem",
-                  fontFamily: "var(--font-fraunces)",
-                  fontSize: "8rem",
-                  fontWeight: 900,
-                  color: "rgba(255,255,255,0.03)",
-                  lineHeight: 1,
-                  userSelect: "none",
-                  pointerEvents: "none",
-                }}
-              >
-                {step.number}
-              </div>
+          {/* Dotted connector line (desktop only) */}
+          <div
+            aria-hidden
+            className="hidden-mobile"
+            style={{
+              position: "absolute",
+              top: "2.25rem",
+              left: "calc(33.33% - 0rem)",
+              right: "calc(33.33% - 0rem)",
+              height: "1px",
+              borderTop: "2px dashed var(--color-border)",
+              zIndex: 0,
+            }}
+          />
 
-              <div
-                style={{
-                  width: "2.25rem",
-                  height: "2.25rem",
+          {c.steps.map((step, i) => {
+            const Icon = iconMap[step.icon as keyof typeof iconMap];
+            return (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                style={{ textAlign: "center", position: "relative", zIndex: 1 }}
+              >
+                {/* Number circle */}
+                <div style={{
+                  width: "4.5rem",
+                  height: "4.5rem",
                   borderRadius: "50%",
-                  background: "var(--color-primary)",
-                  color: "var(--color-white)",
+                  background: "var(--color-white)",
+                  border: "2px solid var(--color-border)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontWeight: 700,
-                  fontSize: "0.85rem",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                {i + 1}
-              </div>
-              <h3
-                style={{
+                  margin: "0 auto 1.5rem",
+                  position: "relative",
+                }}>
+                  <div style={{
+                    position: "absolute",
+                    top: "-0.5rem",
+                    right: "-0.25rem",
+                    fontFamily: "var(--font-fraunces)",
+                    fontSize: "0.7rem",
+                    fontWeight: 800,
+                    color: "var(--color-primary)",
+                    background: "var(--color-white)",
+                    padding: "0 0.25rem",
+                    lineHeight: 1,
+                  }}>
+                    {step.number}
+                  </div>
+                  <Icon size={22} color="var(--color-primary)" strokeWidth={1.75} />
+                </div>
+
+                <h3 style={{
                   fontFamily: "var(--font-fraunces)",
                   fontWeight: 700,
-                  fontSize: "1.2rem",
-                  color: "var(--color-white)",
+                  fontSize: "1.15rem",
+                  color: "var(--color-secondary)",
                   marginBottom: "0.75rem",
-                  lineHeight: 1.2,
-                }}
-              >
-                {step.title}
-              </h3>
-              <p style={{ fontSize: "0.925rem", lineHeight: 1.75, color: "rgba(255,255,255,0.55)" }}>
-                {step.description}
-              </p>
-            </div>
-          ))}
-        </div>
+                  lineHeight: 1.25,
+                }}>
+                  {step.title}
+                </h3>
+                <p style={{ fontSize: "0.925rem", lineHeight: 1.75, color: "var(--color-muted)", maxWidth: "260px", margin: "0 auto" }}>
+                  {step.description}
+                </p>
+              </motion.div>
+            );
+          })}
+        </motion.div>
 
-        <div className="fade-up delay-300 howitworks-cta" style={{ textAlign: "center", marginTop: "3rem" }}>
-          <Link href="/book" className="btn-primary" style={{ fontSize: "1rem", padding: "0.95rem 2rem" }}>
-            {t.nav.bookTrial} →
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="howitworks-cta"
+          style={{ textAlign: "center" }}
+        >
+          <Link href={c.cta.href} className="btn-primary" style={{ fontSize: "1rem", padding: "1rem 2.25rem" }}>
+            {c.cta.label}
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

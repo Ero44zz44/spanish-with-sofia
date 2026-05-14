@@ -1,22 +1,15 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useLanguage } from "@/lib/language-context";
-import { TUTOR } from "@/lib/config";
-import { useFadeIn } from "@/lib/use-fade-in";
+import { motion } from "framer-motion";
+import { Mail, MessageSquare, Share2 } from "lucide-react";
+import { siteConfig } from "@/lib/config";
 
-const COUNTRIES = [
-  "United States", "United Kingdom", "Canada", "Australia", "Germany", "France",
-  "Spain", "Mexico", "Netherlands", "Sweden", "Norway", "Denmark", "Switzerland",
-  "Japan", "South Korea", "Brazil", "Argentina", "Italy", "Poland", "Other",
-];
+const c = siteConfig.contact;
+const brand = siteConfig.brand;
 
 export default function Contact() {
-  const { t } = useLanguage();
-  const c = t.contact;
-  const ref = useFadeIn();
-
-  const [form, setForm] = useState({ name: "", email: "", country: "", level: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   async function handleSubmit(e: FormEvent) {
@@ -26,168 +19,138 @@ export default function Contact() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, country: "", level: "" }),
       });
       if (!res.ok) throw new Error();
       setStatus("success");
-      setForm({ name: "", email: "", country: "", level: "", message: "" });
+      setForm({ name: "", email: "", message: "" });
     } catch {
       setStatus("error");
     }
   }
 
   return (
-    <section id="contact" className="section" style={{ background: "var(--color-white)" }} ref={ref}>
+    <section id="contact" style={{ background: "var(--color-surface)", padding: "7rem 0" }}>
       <div className="container">
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1.3fr",
-            gap: "5rem",
-            alignItems: "start",
-          }}
           className="contact-grid"
+          style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: "6rem", alignItems: "start" }}
         >
           {/* Left info */}
-          <div>
-            <div className="section-label fade-up">{c.heading}</div>
-            <h2
-              className="fade-up delay-100"
-              style={{
-                fontFamily: "var(--font-fraunces, var(--font-serif))",
-                fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
-                fontWeight: 800,
-                color: "var(--color-secondary)",
-                marginTop: "0.5rem",
-                marginBottom: "1.25rem",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              {c.heading}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "1.1rem" }}>
+              <span style={{ width: "1.75rem", height: "1.5px", background: "var(--color-primary)", display: "inline-block" }} />
+              <span style={{ fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-primary)" }}>
+                {c.eyebrow}
+              </span>
+            </div>
+            <h2 style={{
+              fontFamily: "var(--font-fraunces)",
+              fontSize: "clamp(2rem, 4vw, 2.75rem)",
+              fontWeight: 800,
+              color: "var(--color-secondary)",
+              letterSpacing: "-0.025em",
+              lineHeight: 1.1,
+              marginBottom: "1.25rem",
+            }}>
+              {c.headline}
             </h2>
-            <p className="fade-up delay-200" style={{ fontSize: "1rem", lineHeight: 1.7, color: "var(--color-muted)", marginBottom: "2rem" }}>
-              {c.subheading}
+            <p style={{ fontSize: "1rem", lineHeight: 1.75, color: "var(--color-muted)", marginBottom: "2.5rem" }}>
+              {c.description}
             </p>
 
-            <div className="fade-up delay-300" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-              <a
-                href={`mailto:${TUTOR.email}`}
-                style={{ display: "flex", alignItems: "center", gap: "0.75rem", color: "var(--color-secondary)", textDecoration: "none", fontWeight: 500 }}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                  <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                </svg>
-                {TUTOR.email}
-              </a>
-              <a
-                href={TUTOR.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ display: "flex", alignItems: "center", gap: "0.75rem", color: "var(--color-secondary)", textDecoration: "none", fontWeight: 500 }}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                </svg>
-                {TUTOR.phone} (WhatsApp)
-              </a>
-              <a
-                href={TUTOR.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ display: "flex", alignItems: "center", gap: "0.75rem", color: "var(--color-secondary)", textDecoration: "none", fontWeight: 500 }}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                  <rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
-                {TUTOR.instagramHandle}
-              </a>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", color: "var(--color-muted)", fontSize: "0.95rem" }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-muted)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                </svg>
-                {c.timezone}
-              </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+              {[
+                {
+                  Icon: Mail,
+                  label: brand.email,
+                  href: `mailto:${brand.email}`,
+                },
+                {
+                  Icon: MessageSquare,
+                  label: `${brand.phone} (WhatsApp)`,
+                  href: brand.whatsapp,
+                },
+                {
+                  Icon: Share2,
+                  label: brand.instagramHandle,
+                  href: brand.instagram,
+                },
+              ].map(({ Icon, label, href }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  style={{ display: "flex", alignItems: "center", gap: "0.875rem", color: "var(--color-secondary)", textDecoration: "none", fontWeight: 500, fontSize: "0.95rem", transition: "color 0.2s" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-primary)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-secondary)")}
+                >
+                  <span style={{ width: "2.25rem", height: "2.25rem", borderRadius: "0.5rem", background: "rgba(192,90,53,0.08)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <Icon size={16} color="var(--color-primary)" strokeWidth={1.75} />
+                  </span>
+                  {label}
+                </a>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Contact form */}
-          <div className="fade-up delay-200">
+          {/* Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
             {status === "success" ? (
-              <div
-                style={{
-                  background: "rgba(217,119,87,0.08)",
-                  border: "1px solid var(--color-primary)",
-                  borderRadius: "var(--radius)",
-                  padding: "2rem",
-                  textAlign: "center",
-                  color: "var(--color-secondary)",
-                  fontSize: "1rem",
-                  lineHeight: 1.7,
-                }}
-              >
-                <div style={{ fontSize: "2rem", marginBottom: "0.75rem" }}>✅</div>
-                <div style={{ fontWeight: 600, marginBottom: "0.5rem" }}>{c.successMsg}</div>
+              <div style={{
+                background: "rgba(192,90,53,0.06)",
+                border: "1px solid var(--color-primary)",
+                borderRadius: "var(--radius)",
+                padding: "3rem",
+                textAlign: "center",
+              }}>
+                <div style={{ fontFamily: "var(--font-fraunces)", fontSize: "1.5rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "0.75rem" }}>
+                  Message sent.
+                </div>
+                <p style={{ fontSize: "1rem", color: "var(--color-muted)" }}>{c.successMsg}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }} className="form-row">
-                  <div>
-                    <label className="form-label">{c.nameLabel}</label>
-                    <input
-                      className="form-input"
-                      type="text"
-                      required
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <label className="form-label">{c.emailLabel}</label>
-                    <input
-                      className="form-input"
-                      type="email"
-                      required
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    />
-                  </div>
-                </div>
-
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }} className="form-row">
-                  <div>
-                    <label className="form-label">{c.countryLabel}</label>
-                    <select
-                      className="form-input"
-                      value={form.country}
-                      onChange={(e) => setForm({ ...form, country: e.target.value })}
-                    >
-                      <option value="">— Select —</option>
-                      {COUNTRIES.map((co) => (
-                        <option key={co} value={co}>{co}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="form-label">{c.levelLabel}</label>
-                    <select
-                      className="form-input"
-                      value={form.level}
-                      onChange={(e) => setForm({ ...form, level: e.target.value })}
-                    >
-                      <option value="">— Select —</option>
-                      {c.levels.map((lv) => (
-                        <option key={lv.value} value={lv.value}>{lv.label}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
                 <div>
-                  <label className="form-label">{c.messageLabel}</label>
+                  <label className="form-label">Your Name</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    required
+                    placeholder="Sarah Johnson"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <label className="form-label">Email Address</label>
+                  <input
+                    className="form-input"
+                    type="email"
+                    required
+                    placeholder="sarah@example.com"
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <label className="form-label">Message</label>
                   <textarea
                     className="form-input"
                     rows={5}
                     required
+                    placeholder="Tell me a bit about your Spanish goals..."
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     style={{ resize: "vertical" }}
@@ -198,15 +161,19 @@ export default function Contact() {
                   <p style={{ color: "#e53e3e", fontSize: "0.9rem" }}>{c.errorMsg}</p>
                 )}
 
-                <button type="submit" className="btn-primary contact-submit" disabled={status === "loading"} style={{ alignSelf: "flex-start" }}>
-                  {status === "loading" ? "Sending…" : c.submitBtn}
+                <button
+                  type="submit"
+                  className="btn-primary contact-submit"
+                  disabled={status === "loading"}
+                  style={{ alignSelf: "flex-start" }}
+                >
+                  {status === "loading" ? "Sending…" : "Send Message"}
                 </button>
               </form>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
-
     </section>
   );
 }
