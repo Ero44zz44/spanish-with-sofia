@@ -16,11 +16,11 @@ const NAV = [
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const supabase = createClient();
 
   if (pathname === "/admin/login") return <>{children}</>;
 
   async function signOut() {
+    const supabase = createClient();
     await supabase.auth.signOut();
     router.push("/admin/login");
   }

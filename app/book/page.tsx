@@ -2,6 +2,8 @@ import BookingWidget from "@/components/booking/BookingWidget";
 import { TUTOR } from "@/lib/config";
 import type { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: `Book a Lesson — Spanish with ${TUTOR.name}`,
   description: "Book your personalized Spanish lesson with Sofía Martínez. Free 30-minute trial available.",
