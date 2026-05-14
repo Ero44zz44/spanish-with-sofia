@@ -268,43 +268,55 @@ body {
   .hidden-mobile { display: none !important; }
 
   /* Grids that stack at tablet */
-  .hero-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
-  .about-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
+  .hero-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
+  .about-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
   .contact-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
   .form-row { grid-template-columns: 1fr !important; }
 
-  /* Hero: hide the clip-path background panel — looks wrong when stacked */
+  /* Hero: hide clip-path background panel */
   .hero-surface-panel { display: none !important; }
 
   /* Hero: reduce section padding */
-  .hero-section { padding: 3rem 0 4rem !important; }
+  .hero-section { padding: 2.5rem 0 3rem !important; }
 
-  /* Hero photo: cap height so it doesn't dominate on small screens */
-  .hero-photo-wrap { max-height: 340px !important; aspect-ratio: unset !important; }
-  .hero-photo-col { padding-bottom: 2rem; }
+  /* Hero label: prevent 2-line wrap */
+  .hero-label { font-size: 0.62rem !important; letter-spacing: 0.07em !important; }
 
-  /* Hero buttons: stack and stretch full width */
+  /* Hero photo: explicit height so Next.js fill Image renders correctly */
+  .hero-photo-wrap { height: 280px !important; width: 100% !important; max-width: 100% !important; border-radius: 1rem !important; }
+  .hero-photo-col { padding-bottom: 0 !important; padding-top: 1.5rem !important; }
+
+  /* Hero buttons: stack full width */
   .hero-buttons { flex-direction: column !important; }
   .hero-buttons a { width: 100% !important; text-align: center !important; justify-content: center !important; }
 
-  /* Hero stats: smaller font, tighter spacing */
-  .hero-stats { padding-top: 1.25rem !important; }
+  /* Hero stats: tighter spacing */
+  .hero-stats { padding-top: 1.25rem !important; margin-top: 1.5rem !important; }
   .hero-stat { padding-right: 0.75rem !important; margin-right: 0.75rem !important; }
 
-  /* About badges: pull in so they don't overflow the container */
-  .about-bg-shape { left: 0 !important; width: 96% !important; }
-  .about-years-badge { bottom: -0.75rem !important; right: -0.5rem !important; padding: 0.875rem 1rem !important; min-width: unset !important; }
-  .about-years-num { font-size: 2rem !important; }
+  /* About photo: cap height + override 3/4 aspect-ratio so it fills full width */
+  .about-photo-container { height: 300px !important; width: 100% !important; aspect-ratio: auto !important; }
+
+  /* About badges: pull in to avoid overflow */
+  .about-bg-shape { left: 0 !important; width: 96% !important; height: 88% !important; }
+  .about-years-badge { bottom: -0.5rem !important; right: -0.25rem !important; padding: 0.75rem 1rem !important; min-width: unset !important; }
+  .about-years-num { font-size: 1.75rem !important; }
   .about-countries-badge { display: none !important; }
 
-  /* FinalCTA buttons: stack */
+  /* FinalCTA buttons: stack full width */
   .cta-buttons { flex-direction: column !important; align-items: stretch !important; }
   .cta-buttons a { text-align: center !important; justify-content: center !important; }
+
+  /* Contact submit: full width */
+  .contact-submit { width: 100% !important; align-self: stretch !important; justify-content: center !important; }
+
+  /* HowItWorks CTA: full width */
+  .howitworks-cta { display: flex !important; flex-direction: column !important; align-items: stretch !important; }
 }
 
 /* Mobile only (≤640px) */
 @media (max-width: 640px) {
-  #reassurance-grid { grid-template-columns: 1fr !important; }
+  #reassurance-grid { grid-template-columns: 1fr !important; gap: 0.75rem !important; }
   #lessons-grid { grid-template-columns: 1fr !important; }
   #steps-grid { grid-template-columns: 1fr !important; }
   #reviews-grid { grid-template-columns: 1fr !important; }
@@ -313,9 +325,6 @@ body {
 
   /* About credentials: single column on very small */
   .about-credentials { grid-template-columns: 1fr !important; }
-
-  /* Reassurance cards: remove 3-column requirement */
-  #reassurance-grid { gap: 0.75rem !important; }
 }
 
 /* Tablet only (641–768px) */

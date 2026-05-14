@@ -155,7 +155,7 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        <div className="fade-up delay-300" style={{ textAlign: "center", marginTop: "3rem" }}>
+        <div className="fade-up delay-300 howitworks-cta" style={{ textAlign: "center", marginTop: "3rem" }}>
           <Link href="/book" className="btn-primary" style={{ fontSize: "1rem", padding: "0.95rem 2rem" }}>
             {t.nav.bookTrial} →
           </Link>

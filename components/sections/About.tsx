@@ -36,6 +36,7 @@ export default function About() {
               }}
             />
             <div
+              className="about-photo-container"
               style={{
                 position: "relative",
                 aspectRatio: "3/4",

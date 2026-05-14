@@ -117,7 +117,7 @@ export default function FinalCTA() {
           style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}
         >
           <Link href="/book" className="btn-white" style={{ fontSize: "1.05rem", padding: "1rem 2.5rem" }}>
-            {f.btn} →
+            {f.btn}
           </Link>
           <a
             href={`mailto:${TUTOR.email}`}

@@ -190,7 +190,7 @@ export default function Contact() {
                   <p style={{ color: "#e53e3e", fontSize: "0.9rem" }}>{c.errorMsg}</p>
                 )}
 
-                <button type="submit" className="btn-primary" disabled={status === "loading"} style={{ alignSelf: "flex-start" }}>
+                <button type="submit" className="btn-primary contact-submit" disabled={status === "loading"} style={{ alignSelf: "flex-start" }}>
                   {status === "loading" ? "Sending…" : c.submitBtn}
                 </button>
               </form>

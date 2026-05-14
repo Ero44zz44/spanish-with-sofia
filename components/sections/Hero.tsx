@@ -46,7 +46,7 @@ export default function Hero() {
             {/* Editorial label */}
             <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "2rem" }}>
               <div style={{ width: "2rem", height: "1.5px", background: "var(--color-primary)", flexShrink: 0 }} />
-              <span style={{
+              <span className="hero-label" style={{
                 fontSize: "0.72rem",
                 fontWeight: 600,
                 letterSpacing: "0.12em",
