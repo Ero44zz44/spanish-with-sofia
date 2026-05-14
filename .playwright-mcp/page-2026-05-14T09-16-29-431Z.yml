@@ -1,0 +1,84 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "🇲🇽 Sofía Martínez" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: 🇲🇽
+        - generic [ref=e7]: Sofía Martínez
+      - navigation [ref=e8]:
+        - link "About" [ref=e9] [cursor=pointer]:
+          - /url: "#about"
+        - link "Lessons" [ref=e10] [cursor=pointer]:
+          - /url: "#lessons"
+        - link "Reviews" [ref=e11] [cursor=pointer]:
+          - /url: "#reviews"
+        - link "FAQ" [ref=e12] [cursor=pointer]:
+          - /url: "#faq"
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: "#contact"
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - button "EN" [ref=e16] [cursor=pointer]
+          - button "ES" [ref=e17] [cursor=pointer]
+        - link "Book Free Trial" [ref=e18] [cursor=pointer]:
+          - /url: /book
+  - main [ref=e19]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]: Online Booking
+        - heading "Book a Lesson with Sofía 🇲🇽" [level=1] [ref=e24]
+        - paragraph [ref=e25]: Choose your lesson type and pick a time that works for you. All times shown in Mexico City time (GMT-6).
+      - generic [ref=e28]:
+        - generic [ref=e30]: 1 Lesson Type
+        - generic [ref=e33]: 2 Pick a Date
+        - generic [ref=e36]: 3 Pick a Time
+        - generic [ref=e39]: 4 Your Details
+        - generic [ref=e42]: 5 Confirm
+      - generic [ref=e43]:
+        - generic [ref=e44]:
+          - generic [ref=e45]: 🔒
+          - text: No payment required to book
+        - generic [ref=e46]:
+          - generic [ref=e47]: 🔄
+          - text: Free cancellation 24h before
+        - generic [ref=e48]:
+          - generic [ref=e49]: ✉️
+          - text: Confirmation sent to your email
+  - contentinfo [ref=e50]:
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - generic [ref=e55]: 🇲🇽
+            - generic [ref=e56]: Sofía Martínez
+          - paragraph [ref=e57]: Native Mexican Spanish tutor helping English-speaking adults build real fluency online.
+          - link "Instagram" [ref=e59] [cursor=pointer]:
+            - /url: https://instagram.com/spanishwithsofia
+        - generic [ref=e60]:
+          - heading "Quick Links" [level=4] [ref=e61]
+          - list [ref=e62]:
+            - listitem [ref=e63]:
+              - link "About" [ref=e64] [cursor=pointer]:
+                - /url: "#about"
+            - listitem [ref=e65]:
+              - link "Lessons" [ref=e66] [cursor=pointer]:
+                - /url: "#lessons"
+            - listitem [ref=e67]:
+              - link "Reviews" [ref=e68] [cursor=pointer]:
+                - /url: "#reviews"
+            - listitem [ref=e69]:
+              - link "FAQ" [ref=e70] [cursor=pointer]:
+                - /url: "#faq"
+            - listitem [ref=e71]:
+              - link "Book Free Trial" [ref=e72] [cursor=pointer]:
+                - /url: /book
+        - generic [ref=e73]:
+          - heading "Contact" [level=4] [ref=e74]
+          - generic [ref=e75]:
+            - link "sofia@spanishwithsofia.com" [ref=e76] [cursor=pointer]:
+              - /url: mailto:sofia@spanishwithsofia.com
+            - link "+52 55 1234 5678" [ref=e77] [cursor=pointer]:
+              - /url: https://wa.me/525512345678
+            - generic [ref=e78]: 🕐 Mexico City (GMT-6)
+      - paragraph [ref=e79]: © 2026 Spanish with Sofía. Made with ❤️ in Mexico City
+  - alert [ref=e80]

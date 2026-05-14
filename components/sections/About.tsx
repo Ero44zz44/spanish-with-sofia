@@ -23,6 +23,7 @@ export default function About() {
             {/* Terracotta background shape */}
             <div
               aria-hidden
+              className="about-bg-shape"
               style={{
                 position: "absolute",
                 top: "2rem",
@@ -55,6 +56,7 @@ export default function About() {
 
             {/* Years badge */}
             <div
+              className="about-years-badge"
               style={{
                 position: "absolute",
                 bottom: "-1.75rem",
@@ -69,7 +71,7 @@ export default function About() {
                 textAlign: "center",
               }}
             >
-              <div style={{
+              <div className="about-years-num" style={{
                 fontSize: "2.75rem",
                 fontWeight: 900,
                 fontFamily: "var(--font-fraunces)",
@@ -84,6 +86,7 @@ export default function About() {
 
             {/* Countries badge */}
             <div
+              className="about-countries-badge"
               style={{
                 position: "absolute",
                 top: "1.25rem",
@@ -137,7 +140,7 @@ export default function About() {
 
             {/* Credentials — 2-column grid */}
             <div className="fade-up delay-300" style={{ marginBottom: "2.25rem" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.625rem" }}>
+              <div className="about-credentials" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.625rem" }}>
                 {a.credentials.map((c, i) => (
                   <div
                     key={i}

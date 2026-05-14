@@ -12,6 +12,7 @@ export default function Hero() {
   return (
     <section
       id="home"
+      className="hero-section"
       style={{
         background: "var(--color-bg)",
         padding: "5rem 0 7rem",
@@ -22,6 +23,7 @@ export default function Hero() {
       {/* Warm surface panel — right half background */}
       <div
         aria-hidden
+        className="hero-surface-panel"
         style={{
           position: "absolute",
           top: 0,
@@ -79,7 +81,7 @@ export default function Hero() {
               {h.subheadline}
             </p>
 
-            <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap", marginBottom: "3.25rem" }}>
+            <div className="hero-buttons" style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap", marginBottom: "3.25rem" }}>
               <Link href="/book" className="btn-primary" style={{ fontSize: "1rem", padding: "0.95rem 2rem" }}>
                 {h.ctaPrimary} →
               </Link>
@@ -89,7 +91,7 @@ export default function Hero() {
             </div>
 
             {/* Trust stats — editorial row */}
-            <div style={{
+            <div className="hero-stats" style={{
               display: "flex",
               gap: "0",
               borderTop: "1px solid var(--color-border)",
@@ -102,6 +104,7 @@ export default function Hero() {
               ].map((stat, i) => (
                 <div
                   key={i}
+                  className="hero-stat"
                   style={{
                     flex: 1,
                     paddingRight: i < 2 ? "1.5rem" : 0,
@@ -127,7 +130,7 @@ export default function Hero() {
           </div>
 
           {/* Photo column */}
-          <div style={{ position: "relative", display: "flex", justifyContent: "center" }}>
+          <div className="hero-photo-col" style={{ position: "relative", display: "flex", justifyContent: "center" }}>
             {/* Offset terracotta shadow shape */}
             <div
               aria-hidden
@@ -144,6 +147,7 @@ export default function Hero() {
             />
 
             <div
+              className="hero-photo-wrap"
               style={{
                 position: "relative",
                 width: "100%",
