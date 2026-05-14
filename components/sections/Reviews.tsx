@@ -118,7 +118,7 @@ export default function Reviews() {
                   pointerEvents: "none",
                 }}
               >
-                "
+                &ldquo;
               </div>
 
               {/* Stars */}
@@ -138,7 +138,7 @@ export default function Reviews() {
                   fontStyle: "italic",
                 }}
               >
-                "{item.quote}"
+                &ldquo;{item.quote}&rdquo;
               </p>
 
               {/* Author */}

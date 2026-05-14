@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { addMinutes, format, parseISO, startOfDay, endOfDay } from "date-fns";
+import { addMinutes, parseISO, startOfDay, endOfDay } from "date-fns";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

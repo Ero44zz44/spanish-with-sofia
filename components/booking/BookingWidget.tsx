@@ -124,9 +124,6 @@ export default function BookingWidget() {
   const serviceName = state.service
     ? (lang === "es" ? state.service.name_es : state.service.name)
     : "";
-  const serviceDesc = state.service
-    ? (lang === "es" ? state.service.description_es : state.service.description)
-    : "";
 
   if (status === "success") {
     return (
